@@ -1,5 +1,6 @@
 package cn.edu.nuc.androidlab.yixue
 
+import android.content.Context
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
@@ -9,43 +10,66 @@ import com.amap.api.location.AMapLocationListener
 /**
  * Location Util
  *
+ * 初始化!!
  * Created by MurphySL on 2017/7/5.
  */
-object LocationManager {
+class LocationManager{
 
-    val locationClient : AMapLocationClient = AMapLocationClient(MyApplication.instance())
-    lateinit var locationClientOption : AMapLocationClientOption
+    private lateinit var locationClient : AMapLocationClient
+    private lateinit var locationClientOption : AMapLocationClientOption // 定位参数
 
-    //建造者模式！！！
-    fun setLocationClientOption(){
+    constructor(context: Context){
+        locationClient = AMapLocationClient(context.applicationContext)
+    }
+
+
+    /**
+     * 默认定位参数
+     */
+    private fun setDefaultLocationClientOption() {
         locationClientOption = AMapLocationClientOption()
 
-        locationClientOption.locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy // 高精度
-        locationClientOption.interval = 2000 // 连续定位时间间隔
-        locationClientOption.isNeedAddress = true // 是否需要返回地址描述
-        // 强制刷新 WIFI （默认）
-        // 不允许模拟 Mock 位置结果 （默认）
-        // 定位请求超时时间 30s （默认）
+        // 高精度
+        // 连续定位时间间隔
+        // 连续定位
+        // 默认连续定位策略
+        // 是否需要返回地址描述
+        locationClientOption.isWifiScan = true // 强制刷新 WIFI
+        // 不允许模拟 GPS 位置结果
+        // 定位请求超时时间 30s
+        // 网络定位协议 HTTP
         locationClient.setLocationOption(locationClientOption)
     }
 
-
+    /**
+     * 开始定位
+     */
     fun openLocation(){
+        setDefaultLocationClientOption()
         locationClient.startLocation()
     }
 
+    /**
+     * 停止定位
+     */
     fun stopLocation(){
         locationClient.stopLocation()
+        locationClient.onDestroy()
     }
 
-    public interface LocationListener{
+    /**
+     * 定位回调
+     */
+    interface LocationListener{
         fun onLocationChanged(aMapLocation : AMapLocation?)
     }
 
+    /**
+     * 设置回调监听
+     */
     fun setLocationListener(locationListener : LocationListener){
         val aMapLoctionListener = AMapLocationListener {
-            aMapLocation ->
-            locationListener.onLocationChanged(aMapLocation)
+            aMapLocation -> locationListener.onLocationChanged(aMapLocation)
         }
         locationClient.setLocationListener(aMapLoctionListener)
     }

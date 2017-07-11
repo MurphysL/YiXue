@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import cn.edu.nuc.androidlab.yixue.R
 import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVUser
@@ -16,6 +17,10 @@ import kotlinx.android.synthetic.main.activity_login.*
  * Created by MurphySL on 2017/7/11.
  */
 class LoginActivity : AppCompatActivity(){
+    private val TAG : String = this.javaClass.simpleName
+
+    private val context = this // 待修改
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -41,15 +46,16 @@ class LoginActivity : AppCompatActivity(){
 
         register.setOnClickListener {
             startActivity(Intent(LoginActivity@this, RegisterActivity::class.java))
+            finish()
         }
     }
 
     private fun login(username : String , password : String) {
-        val user : AVUser = AVUser()
         AVUser.logInInBackground(username, password, object  : LogInCallback<AVUser>(){
             override fun done(p0: AVUser?, p1: AVException?) {
                 if(p0 == null){
-                    //startActivity(Intent(LoginActivity@this, ))
+                    Snackbar.make(username_layout, "注册成功", Snackbar.LENGTH_SHORT).show()
+                    startActivity(Intent(context, SelectLiveActivity::class.java))
                 }else{
                     Snackbar.make(password_layout, "登录错误：${p1.toString()}" ,Snackbar.LENGTH_SHORT).show()
                 }

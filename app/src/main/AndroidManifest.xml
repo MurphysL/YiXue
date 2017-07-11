@@ -84,6 +84,8 @@
             android:name=".ui.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".ui.activity.SelectLiveActivity"/>
+
     </application>
 
 </manifest>

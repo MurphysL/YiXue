@@ -1,5 +1,6 @@
 package cn.edu.nuc.androidlab.yixue.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -14,10 +15,14 @@ import java.util.regex.Pattern
 /**
  * RegisterActivity
  *
+ * 用户名唯一 唯一性检查
+ *
  * Created by MurphySL on 2017/7/11.
  */
 class RegisterActivity : AppCompatActivity(){
     private val TAG  = this.javaClass.simpleName
+
+    private val context = this // 待修改
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,10 +63,12 @@ class RegisterActivity : AppCompatActivity(){
         user.username = username
         user.email = email
         user.setPassword(password)
+
         user.signUpInBackground(object : SignUpCallback(){
             override fun done(p0: AVException?) {
                 if(p0 == null){
-                    //startActivity(Intent(RegisterActivity@this, ))
+                    Snackbar.make(email_layout, "注册成功", Snackbar.LENGTH_SHORT).show()
+                    startActivity(Intent(context, SelectLiveActivity::class.java))
                 }else{
                     Snackbar.make(email_layout, "注册失败", Snackbar.LENGTH_SHORT).show()
                 }

@@ -52,20 +52,14 @@ class MapFragment : Fragment() {
 
     private fun initMarks() {
 
-        aMap.setInfoWindowAdapter(MyInfoWindow(context))
+        aMap.setInfoWindowAdapter(MyInfoWindow(context, "中北大学", "Android 实验室"))
         aMap.setOnInfoWindowClickListener {
-            arg0 ->
-            arg0.title = "中北大学"
-            arg0.snippet = "Android 实验室"
-            Snackbar.make(map, "已点击", Snackbar.LENGTH_SHORT).show()
+            arg0 -> Snackbar.make(map, "已点击", Snackbar.LENGTH_SHORT).show()
         }
 
         val location : LatLng = LatLng(38.014836, 112.449396)
         // Marker
-        val marker : Marker = aMap.addMarker(
-                MarkerOptions().position(location)
-                        .title("test")
-                        .snippet("Marker"))
+        val marker : Marker = aMap.addMarker(MarkerOptions().position(location))
 
         val anim : Animation = ScaleAnimation(0f, 1.0f, 0f, 1.0f)
         val duration : Long = 1000L

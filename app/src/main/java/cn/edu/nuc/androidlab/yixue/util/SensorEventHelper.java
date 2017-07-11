@@ -1,4 +1,4 @@
-package cn.edu.nuc.androidlab.yixue;
+package cn.edu.nuc.androidlab.yixue.util;
 
 import android.content.Context;
 import android.hardware.Sensor;

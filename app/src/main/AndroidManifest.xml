@@ -85,6 +85,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".ui.activity.SelectLiveActivity"/>
+        <activity android:name=".ui.activity.CreateLiveActivity"/>
+        <activity android:name=".ui.activity.LiveActivity"/>
 
     </application>
 

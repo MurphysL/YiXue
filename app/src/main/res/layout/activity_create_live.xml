@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/create_live_hint"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_editor_absoluteX="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:text="创建Live"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/live_name_hint"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_live_hint"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:text="Live 名称："/>
+
+
+    <EditText
+        android:id="@+id/live_name"
+        app:layout_constraintTop_toBottomOf="@+id/create_live_hint"
+        app:layout_constraintStart_toStartOf="@id/live_name_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/live_time_hint"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/live_name_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="Live 开始时间："/>
+
+
+    <EditText
+        android:id="@+id/live_time"
+        app:layout_constraintTop_toBottomOf="@+id/live_name"
+        app:layout_constraintStart_toStartOf="@id/live_time_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/live_summary_hint"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/live_time_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="Live 简介："/>
+
+
+    <EditText
+        android:id="@+id/live_summary"
+        app:layout_constraintTop_toBottomOf="@+id/live_time"
+        app:layout_constraintStart_toStartOf="@id/live_summary_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/live_price_hint"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/live_summary_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="Live 定价："/>
+
+
+    <EditText
+        android:id="@+id/live_price"
+        app:layout_constraintTop_toBottomOf="@+id/live_summary"
+        app:layout_constraintStart_toStartOf="@id/live_summary_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/bt_create"
+        android:text="创建Live"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/live_price"
+        android:layout_width="200dp"
+        android:layout_height="50dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>

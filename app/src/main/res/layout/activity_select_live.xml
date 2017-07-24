@@ -4,6 +4,12 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/create"
+        android:text="创建Live（测试）"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
         android:id="@+id/go"
         android:text="进入Live（测试）"
         android:layout_width="match_parent"

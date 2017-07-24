@@ -8,18 +8,27 @@ package cn.edu.nuc.androidlab.yixue
 class Config{
     companion object {
         @JvmStatic
-        val TEXT_LIVE_TABLE_NAME  : String = "Live" // 文字 Live 表名
-        @JvmStatic
-        val TEXT_LIVE_STAR : String = "star" // 文字 Live 评价星级属性名
-        @JvmStatic
-        val TEXT_LIVE_COMMIT : String = "commit" // 文字 Live 评价
-        @JvmStatic
-        val TEXT_LIVE_USER_ID : String = "userId" // Live 用户ID
-        @JvmStatic
-        val TEXT_LIVE_CONVERSATION_ID : String = "conversationId" // Live 会话ID
-        @JvmStatic
         val USER_TABLE : String= "_User" // 用户信息表
         @JvmStatic
         val CONVERSATION_TABLE : String = "_Conversation" // 会话信息表
+
+        @JvmStatic
+        val TEXT_LIVE_TABLE_NAME  : String = "Live" // 文字 Live 表名
+        @JvmStatic
+        val TEXT_LIVE_USER_ID : String = "userId" // 文字 Live 用户ID
+        @JvmStatic
+        val TEXT_LIVE_CONVERSATION_ID : String = "conversationId" // 文字 Live 会话ID
+        @JvmStatic
+        val TEXT_LIVE_LIVE_NAME : String = "name" // 文字 Live 主题
+        @JvmStatic
+        val TEXT_LIVE_STAR : String = "star" // 文字 Live 评价星级
+        @JvmStatic
+        val TEXT_LIVE_SUMMARY : String = "summary" // 文字 Live 简介
+        @JvmStatic
+        val TEXT_LIVE_PRICE : String = "price" // 文字 Live 价格
+        @JvmStatic
+        val TEXT_LIVE_START_TIME : String = "startAt" // 文字 Live 开始时间
+
+
     }
 }

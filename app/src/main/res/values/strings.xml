@@ -13,4 +13,7 @@
     <string name="login_password_hint">密码</string>
     <string name="login_hint">—— 社交账号直接登录 ——</string>
     <string name="login_register">新用户注册</string>
+
+    <string name="speaker">主讲人 : </string>
+    <string name="join_num_hint">人已参与</string>
 </resources>

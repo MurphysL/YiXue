@@ -37,67 +37,37 @@ class SelectLiveActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_live)
 
-        go.setOnClickListener {
-            openLive()
-        }
+        initAVIMClient()
 
         clean.setOnClickListener {
             AVUser.logOut()
             startActivity(Intent(SelectLiveActivity@this, LoginActivity::class.java))
         }
+
     }
 
-    private fun openLive() {
+    /**
+     * 开启实时通讯，创建 AVIMClient
+     */
+    private fun initAVIMClient() {
         val userId = AVUser.getCurrentUser().objectId // 用户ID
-        val live_name : String = "TEST" // Live 名称
-        val audiences : ArrayList<LCChatKitUser> = ArrayList() // 听众
-        val test_audiences = LCChatKitUser("5965e3e70ce463005886ec58", "test2", null) // 测试用户
-        audiences.add(test_audiences)
-        val audiences_clientId : ArrayList<String> = ArrayList() // 所有听众 clientId
-
-        audiences.mapTo(audiences_clientId) { it.userId }
-
-
+        /**
+         * AVIMClient.open(AVIMClientCallback cb) 这个方法表示开始连接 LeanCloud 云端服务器（即启动实时通信服务），它在整个使用周期内只需要调用一次。
+         */
         LCChatKit.getInstance().open(userId, object : AVIMClientCallback(){
             override fun done(p0: AVIMClient?, p1: AVIMException?) {
-                if(p1 == null){
-                    LCChatKit.getInstance().client.createConversation(audiences_clientId, live_name, null, true,
-                            object : AVIMConversationCreatedCallback(){
-                                override fun done(p0: AVIMConversation?, p1: AVIMException?) {
-                                    if(p0 != null){
+                p0?.let {
+                    go.setOnClickListener {
+                        Log.i(TAG, p0.clientId)
+                        startActivity(Intent(context, LiveActivity::class.java))
+                    }
 
-                                        createLive(userId, p0.conversationId)
-
-                                    }else{
-                                        Snackbar.make(clean, "未知的错误发生了", Snackbar.LENGTH_SHORT).show()
-                                        Log.i(TAG, "获取会话失败")
-                                    }
-                                }
-                            })
-                }else{
-                    Snackbar.make(clean, p1.toString(), Snackbar.LENGTH_SHORT).show()
-                }
-            }
-        })
-
-    }
-
-    //创建关联表
-    private fun createLive(userId : String , conversationId :String) {
-        val live : AVObject = AVObject(Config.TEXT_LIVE_TABLE_NAME)
-        live.put(Config.TEXT_LIVE_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, userId))
-        live.put(Config.TEXT_LIVE_CONVERSATION_ID, AVObject.createWithoutData(Config.CONVERSATION_TABLE, conversationId))
-        live.saveInBackground(object : SaveCallback(){
-            override fun done(p0: AVException?) {
-                if(p0 != null){
-                    Log.i(TAG, "创建 Live 信息失败！$p0")
-                }else{
-                    Snackbar.make(clean, "创建Live成功", Snackbar.LENGTH_SHORT).show()
-                    val intent : Intent = Intent(context, LCIMConversationActivity::class.java)
-                    intent.putExtra(LCIMConstants.CONVERSATION_ID, conversationId)
-                    startActivity(intent)
-                }
+                    create.setOnClickListener {
+                        startActivity(Intent(context, CreateLiveActivity::class.java))
+                    }
+                } ?: Snackbar.make(clean, p1.toString(), Snackbar.LENGTH_SHORT).show()
             }
         })
     }
+
 }

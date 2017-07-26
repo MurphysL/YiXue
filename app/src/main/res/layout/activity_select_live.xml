@@ -16,6 +16,24 @@
         android:layout_height="50dp" />
 
     <Button
+        android:id="@+id/all"
+        android:text="我的Live"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/my"
+        android:text="已选Live(测试)"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/ui"
+        android:text="界面测试"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
         android:id="@+id/clean"
         android:text="退出当前账号"
         android:layout_width="match_parent"

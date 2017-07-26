@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import cn.edu.nuc.androidlab.yixue.Config
+import cn.edu.nuc.androidlab.yixue.util.Config
 import cn.edu.nuc.androidlab.yixue.R
 import com.avos.avoscloud.*
 import com.avos.avoscloud.im.v2.*
@@ -44,7 +44,6 @@ class LiveMainFragment : Fragment(){
                     live_list.adapter = object : CommonAdapter<AVObject>(context, R.layout.item_live, it){
                         override fun convert(holder: ViewHolder?, t: AVObject?, position: Int) {
                             t?.let {
-                                Log.i(TAG, t.get(Config.TEXT_LIVE_LIVE_NAME) as String)
                                 holder?.setText(R.id.live_name, it.get(Config.TEXT_LIVE_LIVE_NAME) as String)
                                 //主讲人
 
@@ -57,7 +56,7 @@ class LiveMainFragment : Fragment(){
 
                                     enterLive((t.get(Config.TEXT_LIVE_CONVERSATION_ID) as AVObject).objectId)
                                 }
-                            }
+                            }?:Snackbar.make(live_list, "未找到相关Live" , Snackbar.LENGTH_LONG).show()
                         }
                     }
                 }

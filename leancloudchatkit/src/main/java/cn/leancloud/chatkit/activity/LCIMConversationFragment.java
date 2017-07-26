@@ -188,6 +188,7 @@ public class LCIMConversationFragment extends Fragment {
       @Override
       public void done(List<AVIMMessage> messageList, AVIMException e) {
         if (filterException(e)) {
+          //MurphySL
           itemAdapter.setMessageList(messageList);
           recyclerView.setAdapter(itemAdapter);
           itemAdapter.setDeliveredAndReadMark(imConversation.getLastDeliveredAt(),

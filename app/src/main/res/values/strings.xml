@@ -16,4 +16,10 @@
 
     <string name="speaker">主讲人 : </string>
     <string name="join_num_hint">人已参与</string>
+
+    <string name="create_name">Live 主题</string>
+    <string name="create_price">Live 价格</string>
+    <string name="create_time">开始时间</string>
+    <string name="create_summary">Live 简介</string>
+    <string name="create_type">Live 类型</string>
 </resources>

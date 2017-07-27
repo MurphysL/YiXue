@@ -37,6 +37,7 @@ import kotlin.collections.ArrayList
  * 2. 多人主讲
  * 3. 流程：开通主讲人身份 -> 实名认证 -> 交纳保证金
  * 4. context
+ * 5.创建live完成后流程
  *
  * Created by MurphySL on 2017/7/24.
  */
@@ -189,6 +190,7 @@ class CreateLiveActivity : AppCompatActivity(){
                     //图片上传成功
 
                     val userId = AVUser.getCurrentUser().objectId // 用户ID
+                    val username = AVUser.getCurrentUser().username
                     val audiences : ArrayList<LCChatKitUser> = ArrayList() // 主讲人及测试用户
                     val test_audience = LCChatKitUser("5965e3e70ce463005886ec58", "test2", "http://oh1zr9i3e.bkt.clouddn.com/17-7-24/61140240.jpg") // 官方测试用户
                     audiences.add(test_audience)
@@ -202,15 +204,16 @@ class CreateLiveActivity : AppCompatActivity(){
                     LCChatKit.getInstance().client.createConversation(audiences_clientId, live_name, null, false, true, object : AVIMConversationCreatedCallback(){
                         override fun done(p0: AVIMConversation?, p1: AVIMException?) {
                             p0?.let {
-                                val live : AVObject = AVObject(Config.TEXT_LIVE_TABLE_NAME)
-                                live.put(Config.TEXT_LIVE_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, userId))
-                                live.put(Config.TEXT_LIVE_CONVERSATION_ID, AVObject.createWithoutData(Config.CONVERSATION_TABLE, it.conversationId))
-                                live.put(Config.TEXT_LIVE_LIVE_NAME, live_name)
-                                live.put(Config.TEXT_LIVE_SUMMARY, live_summary)
-                                live.put(Config.TEXT_LIVE_START_TIME, live_time)
-                                live.put(Config.TEXT_LIVE_PRICE, live_price)
-                                live.put(Config.TEXT_LIVE_TYPE, live_type)
-                                live.put(Config.TEXT_LIVE_PIC, file.url)
+                                val live : AVObject = AVObject(Config.LIVE_TABLE)
+                                live.put(Config.LIVE_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, userId))
+                                live.put(Config.LIVE_USER_NAME, username)
+                                live.put(Config.LIVE_CONVERSATION_ID, AVObject.createWithoutData(Config.CONVERSATION_TABLE, it.conversationId))
+                                live.put(Config.LIVE_NAME, live_name)
+                                live.put(Config.LIVE_SUMMARY, live_summary)
+                                live.put(Config.LIVE_START_AT, live_time)
+                                live.put(Config.LIVE_PRICE, live_price)
+                                live.put(Config.LIVE_TYPE, live_type)
+                                live.put(Config.LIVE_PIC, file.url)
 
                                 live.saveInBackground(object : SaveCallback(){
                                     override fun done(p0: AVException?) {
@@ -225,7 +228,7 @@ class CreateLiveActivity : AppCompatActivity(){
                                             //intent.putExtra(LCIMConstants.CONVERSATION_ID, it.conversationId)
                                             //startActivity(intent)
 
-                                            //startActivity(Intent(context, SelectLiveActivity::class.java))
+                                            startActivity(Intent(context, SelectLiveActivity::class.java))
                                         }
                                     }
                                 })

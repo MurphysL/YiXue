@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import cn.edu.nuc.androidlab.yixue.R
 
 /**
+ * Main LIVE Fragment 测试
+ *
  * Created by MurphySL on 2017/7/24.
  */
-class LiveActivity : AppCompatActivity(){
+class LiveMainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_live)

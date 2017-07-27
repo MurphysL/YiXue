@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import cn.edu.nuc.androidlab.yixue.R
 
 /**
+ * 已选 Live 测试
  * Created by MurphySL on 2017/7/24.
  */
 class JoinLiveActivity : AppCompatActivity(){

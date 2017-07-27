@@ -85,15 +85,14 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".ui.activity.SelectLiveActivity"/>
-        <activity android:name=".ui.activity.CreateLiveActivity"
+        <activity
+            android:name=".ui.activity.CreateLiveActivity"
             android:theme="@style/DetailsTheme"/>
-        <activity android:name=".ui.activity.LiveActivity"/>
+        <activity
+            android:name=".ui.activity.LiveMainActivity"
+            android:theme="@style/DetailsTheme"/>
         <activity android:name=".ui.activity.MyLiveActivity"/>
         <activity android:name=".ui.activity.JoinLiveActivity"/>
-
-        <activity
-            android:name=".ui.activity.UITestActivity"
-            android:theme="@style/TransparentTheme"/>
 
     </application>
 

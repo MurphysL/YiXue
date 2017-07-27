@@ -7,31 +7,47 @@ package cn.edu.nuc.androidlab.yixue.util
  */
 class Config{
     companion object {
-        @JvmStatic
-        val USER_TABLE : String= "_User" // 用户信息表
-        @JvmStatic
-        val CONVERSATION_TABLE : String = "_Conversation" // 会话信息表
 
         @JvmStatic
-        val TEXT_LIVE_TABLE_NAME  : String = "Live" // 文字 Live 表名
+        val USER_TABLE : String= "_User" // 用户表
         @JvmStatic
-        val TEXT_LIVE_USER_ID : String = "userId" // 文字 Live 用户ID
+        val CONVERSATION_TABLE : String = "_Conversation" // 会话表
         @JvmStatic
-        val TEXT_LIVE_CONVERSATION_ID : String = "conversationId" // 文字 Live 会话ID
+        val LIVE_TABLE: String = "Live" // Live 表
         @JvmStatic
-        val TEXT_LIVE_LIVE_NAME : String = "name" // 文字 Live 主题
+        val LU_TABLE : String = "LU" // Live - User 关联表
+
         @JvmStatic
-        val TEXT_LIVE_STAR : String = "star" // 文字 Live 评价星级
+        val LIVE_ID : String = "objectId" // Live ID
         @JvmStatic
-        val TEXT_LIVE_SUMMARY : String = "summary" // 文字 Live 简介
+        val LIVE_USER_ID: String = "userId" // 文字 Live 用户ID
         @JvmStatic
-        val TEXT_LIVE_PRICE : String = "price" // 文字 Live 价格
+        val LIVE_USER_NAME : String = "username" // 用户姓名
         @JvmStatic
-        val TEXT_LIVE_TYPE : String = "type" // 文字 Live 类型
+        val LIVE_CONVERSATION_ID: String = "conversationId" // 文字 Live 会话ID
         @JvmStatic
-        val TEXT_LIVE_PIC : String = "pic" // 文字 Live 封面
+        val LIVE_NAME: String = "name" // 文字 Live 主题
         @JvmStatic
-        val TEXT_LIVE_START_TIME : String = "startAt" // 文字 Live 开始时间
+        val LIVE_STAR: String = "star" // 文字 Live 评价星级
+        @JvmStatic
+        val LIVE_SUMMARY: String = "summary" // 文字 Live 简介
+        @JvmStatic
+        val LIVE_PRICE: String = "price" // 文字 Live 价格
+        @JvmStatic
+        val LIVE_TYPE: String = "type" // 文字 Live 类型
+        @JvmStatic
+        val LIVE_PIC: String = "pic" // 文字 Live 封面
+        @JvmStatic
+        val LIVE_START_AT: String = "startAt" // 文字 Live 开始时间
+
+        @JvmStatic
+        val LU_STAR : String = "star" // 星级
+        @JvmStatic
+        val LU_COMMENT : String = "comment" // 评论
+        @JvmStatic
+        val LU_LIVE_ID : String = "liveId" // Live ID
+        @JvmStatic
+        val LU_USER_ID : String = "userId" // 用户 ID
 
 
     }

@@ -6,15 +6,15 @@ package cn.edu.nuc.androidlab.yixue.util
  * Created by MurphySL on 2017/7/12.
  */
 
-val TEXT_LIVE_TABLE_NAME  : String = "Live" // 文字 Live 表名
+/*val LIVE_TABLE  : String = "Live" // 文字 Live 表名
 
-val TEXT_LIVE_STAR : String = "star" // 文字 Live 评价星级属性名
+val LIVE_STAR : String = "star" // 文字 Live 评价星级属性名
 
 val TEXT_LIVE_COMMIT : String = "commit" // 文字 Live 评价
 
-val TEXT_LIVE_USER_ID : String = "userId" // Live 用户ID
+val LIVE_USER_ID : String = "userId" // Live 用户ID
 
-val TEXT_LIVE_CONVERSATION_ID : String = "conversationId" // Live 会话ID
+val LIVE_CONVERSATION_ID : String = "conversationId" // Live 会话ID
 
 interface Element{
     fun render(builder: StringBuilder, indent : String)
@@ -70,11 +70,11 @@ open class TagWithText(name : String) : Tag(name){
     }
 }
 
-class UserID : TagWithText(TEXT_LIVE_USER_ID)
+class UserID : TagWithText(LIVE_USER_ID)
 
-class ConversationID : TagWithText(TEXT_LIVE_CONVERSATION_ID)
+class ConversationID : TagWithText(LIVE_CONVERSATION_ID)
 
-class STAR : TagWithText(TEXT_LIVE_STAR)
+class STAR : TagWithText(LIVE_STAR)
 
 class COMMIT : TagWithText(TEXT_LIVE_COMMIT)
 
@@ -95,5 +95,5 @@ fun main(args: Array<String>) {
         userId { + "123" }
         conversationId { +"123" }
     }
-}
+}*/
 

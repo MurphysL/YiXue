@@ -5,13 +5,13 @@
 
     <Button
         android:id="@+id/create"
-        android:text="创建Live（测试）"
+        android:text="创建Live"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
     <Button
         android:id="@+id/go"
-        android:text="进入Live（测试）"
+        android:text="进入Live"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
@@ -23,13 +23,7 @@
 
     <Button
         android:id="@+id/my"
-        android:text="已选Live(测试)"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
-
-    <Button
-        android:id="@+id/ui"
-        android:text="界面测试"
+        android:text="已选Live"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 

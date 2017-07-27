@@ -35,6 +35,10 @@ class SelectLiveActivity : AppCompatActivity(){
 
         initAVIMClient()
 
+        AVUser.getCurrentUser()?.let{
+
+        }?:Snackbar.make(clean, "获取当前用户失败！", Snackbar.LENGTH_LONG).show()
+
         create.setOnClickListener {
             startActivity(Intent(SelectLiveActivity@this, CreateLiveActivity::class.java))
         }
@@ -50,10 +54,6 @@ class SelectLiveActivity : AppCompatActivity(){
 
         my.setOnClickListener {
             startActivity(Intent(SelectLiveActivity@this, JoinLiveActivity::class.java))
-        }
-
-        ui.setOnClickListener {
-            startActivity(Intent(SelectLiveActivity@this, UITestActivity::class.java))
         }
 
         notificationTest()
@@ -97,14 +97,16 @@ class SelectLiveActivity : AppCompatActivity(){
             LCChatKit.getInstance().open(userId, object : AVIMClientCallback(){
                 override fun done(p0: AVIMClient?, p1: AVIMException?) {
                     p0?.let {
+
                         go.setOnClickListener {
                             Log.i(TAG, p0.clientId)
-                            startActivity(Intent(context, LiveActivity::class.java))
+                            startActivity(Intent(context, LiveMainActivity::class.java))
                         }
 
                         create.setOnClickListener {
                             startActivity(Intent(context, CreateLiveActivity::class.java))
                         }
+
                     } ?: Snackbar.make(clean, p1.toString(), Snackbar.LENGTH_SHORT).show()
                 }
             })

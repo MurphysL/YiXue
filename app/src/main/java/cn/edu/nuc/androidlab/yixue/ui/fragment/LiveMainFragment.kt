@@ -8,18 +8,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import cn.edu.nuc.androidlab.yixue.util.Config
 import cn.edu.nuc.androidlab.yixue.R
+import cn.edu.nuc.androidlab.yixue.bean.LU
+import cn.edu.nuc.androidlab.yixue.bean.Live
+import cn.edu.nuc.androidlab.yixue.ui.adapter.AnimCommonAdapter
 import com.avos.avoscloud.*
 import com.avos.avoscloud.im.v2.*
 import com.avos.avoscloud.im.v2.callback.AVIMConversationCallback
 import com.avos.avoscloud.im.v2.callback.AVIMConversationQueryCallback
+import com.squareup.picasso.Picasso
 import com.zhy.adapter.recyclerview.CommonAdapter
 import com.zhy.adapter.recyclerview.base.ViewHolder
 import kotlinx.android.synthetic.main.fragment_live_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
- * Live 主展示页面
+ * Live 主展示页面 无限制
+ *
  * Created by MurphySL on 2017/7/24.
  */
 class LiveMainFragment : Fragment(){
@@ -32,34 +40,61 @@ class LiveMainFragment : Fragment(){
         return rootView
     }
 
+    //扩展函数
+    fun ViewHolder.setImageWithPicasso(viewId : Int, url : String) : ViewHolder{
+        val view : ImageView = getView(viewId)
+        Picasso.with(context)
+                .load(url)
+                .into(view)
+        return this
+    }
+
     private fun initData() {
-        val query : AVQuery<AVObject> = AVQuery(Config.TEXT_LIVE_TABLE_NAME)
-        query.addDescendingOrder(Config.TEXT_LIVE_STAR) // 按星级排序
-        query.addDescendingOrder(Config.TEXT_LIVE_START_TIME) // 按时间排序
-        query.findInBackground(object : FindCallback<AVObject>(){
-            override fun done(p0: MutableList<AVObject>?, p1: AVException?) {
+        val query : AVQuery<Live> = AVQuery(Config.LIVE_TABLE)
+        query.addDescendingOrder(Config.LIVE_STAR) // 按星级排序
+        query.addDescendingOrder(Config.LIVE_START_AT) // 按时间排序
+        query.findInBackground(object : FindCallback<Live>(){
+            override fun done(p0: MutableList<Live>?, p1: AVException?) {
                 p0?.let {
-                    Log.i(TAG, "total number : ${p0.size}")
                     live_list.layoutManager = LinearLayoutManager(context)
-                    live_list.adapter = object : CommonAdapter<AVObject>(context, R.layout.item_live, it){
-                        override fun convert(holder: ViewHolder?, t: AVObject?, position: Int) {
+                    live_list.adapter = object : AnimCommonAdapter<Live>(context, R.layout.item_live_new, it){
+                        override fun convert(holder: ViewHolder?, t: Live?, position: Int) {
                             t?.let {
-                                holder?.setText(R.id.live_name, it.get(Config.TEXT_LIVE_LIVE_NAME) as String)
-                                //主讲人
+                                holder?.setText(R.id.live_name, it.name)
+                                holder?.setText(R.id.live_type, it.type)
+                                holder?.setRating(R.id.live_star, it.star.toFloat())
+                                val date = t.startAt
+                                val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+                                holder?.setText(R.id.live_time, sdf.format(date))
+                                holder?.setText(R.id.live_speaker, it.username)
+                                holder?.setImageWithPicasso(R.id.live_pic, it.pic)
+                                // 相关信息
 
-                                // 人数
-
-                                // 星级
-                                //holder?.setRating(R.id.live_start, it.get(Config.TEXT_LIVE_STAR) as Float)
                                 holder?.setOnClickListener(R.id.live_info) {
                                     // 待进行后台认证
+                                    // 付费
 
-                                    enterLive((t.get(Config.TEXT_LIVE_CONVERSATION_ID) as AVObject).objectId)
+                                    uploadInfo(t.objectId, t.conversationId)
                                 }
                             }?:Snackbar.make(live_list, "未找到相关Live" , Snackbar.LENGTH_LONG).show()
                         }
                     }
-                }
+                }?: Snackbar.make(live_list, "您还没有创建 Live ", Snackbar.LENGTH_LONG).show()
+            }
+        })
+
+    }
+
+    private fun uploadInfo(liveId : String, conversationId: String){
+        val lu : LU = LU()
+        lu.liveId = liveId
+        lu.userId = AVUser.getCurrentUser().objectId
+        lu.saveInBackground(object : SaveCallback(){
+            override fun done(p0: AVException?) {
+                p0?.let {
+                    Snackbar.make(live_list, "创建信息失败：$p0", Snackbar.LENGTH_LONG).show()
+                    Log.i(TAG, "创建信息失败：$p0")
+                }?:enterLive(conversationId)
             }
         })
     }
@@ -80,7 +115,7 @@ class LiveMainFragment : Fragment(){
                                 if(p0 != null){
                                     Snackbar.make(live_list, "参与 Live 成功", Snackbar.LENGTH_LONG).show()
                                 }else{
-                                    Snackbar.make(live_list, "进入 Live 失败 $p0", Snackbar.LENGTH_LONG).show()
+                                    Snackbar.make(live_list, "参与 Live 失败 $p0", Snackbar.LENGTH_LONG).show()
                                     Log.i(TAG, p0)
                                 }
                             }

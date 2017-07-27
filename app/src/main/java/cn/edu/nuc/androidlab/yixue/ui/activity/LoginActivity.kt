@@ -53,11 +53,12 @@ class LoginActivity : AppCompatActivity(){
     private fun login(username : String , password : String) {
         AVUser.logInInBackground(username, password, object  : LogInCallback<AVUser>(){
             override fun done(p0: AVUser?, p1: AVException?) {
-                if(p0 == null){
-                    Snackbar.make(username_layout, "注册成功", Snackbar.LENGTH_SHORT).show()
-                    startActivity(Intent(context, SelectLiveActivity::class.java))
+                if(p1 == null){
+                    p0?.let {
+                        startActivity(Intent(context, SelectLiveActivity::class.java))
+                    }?:Snackbar.make(password_layout, "未知的错误！", Snackbar.LENGTH_LONG).show()
                 }else{
-                    Snackbar.make(password_layout, "登录错误：${p1.toString()}" ,Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(password_layout, "登录错误：$p1" ,Snackbar.LENGTH_SHORT).show()
                 }
             }
         })

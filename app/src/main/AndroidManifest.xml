@@ -93,6 +93,9 @@
             android:theme="@style/DetailsTheme"/>
         <activity android:name=".ui.activity.MyLiveActivity"/>
         <activity android:name=".ui.activity.JoinLiveActivity"/>
+        <activity android:name=".ui.activity.NotifiactionActivity"/>
+
+        <receiver android:name=".receiver.LiveSoundsReceiver"/>
 
     </application>
 

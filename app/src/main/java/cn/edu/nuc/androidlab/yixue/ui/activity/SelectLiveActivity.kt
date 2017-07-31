@@ -11,7 +11,10 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.RemoteViews
 import cn.edu.nuc.androidlab.yixue.R
+import cn.edu.nuc.androidlab.yixue.receiver.LiveSoundsReceiver
+import cn.edu.nuc.androidlab.yixue.util.Config
 import cn.leancloud.chatkit.LCChatKit
 import com.avos.avoscloud.AVUser
 import com.avos.avoscloud.im.v2.AVIMClient
@@ -56,28 +59,39 @@ class SelectLiveActivity : AppCompatActivity(){
             startActivity(Intent(SelectLiveActivity@this, JoinLiveActivity::class.java))
         }
 
+        notification.setOnClickListener {
+            startActivity(Intent(SelectLiveActivity@this, NotifiactionActivity::class.java))
+        }
+
         notificationTest()
 
     }
 
-    private fun notificationTest() {
-        val intent : Intent = Intent(this, MyLiveActivity::class.java)
-        val pending : PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
-        val manager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    private fun notificationTest() {
+
+
+
+       /* val manager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = NotificationCompat
                 .Builder(context)
-                .setContentTitle("Test")
-                .setContentText("Test")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round))
-                .setContentIntent(pending)
+                .setContentText("123")
+                .setContentTitle("123")
+               *//* .setContent(remoteViews)
+                .setContentIntent(pending_start)
+                .setContentIntent(pending_next)
+                .setContentIntent(pending_previous)
+                .setContentIntent(pending_stop)
                 .setLights(Color.GREEN, 1000, 1000)
                 .setStyle(NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round))) // 大图片
-                .setPriority(NotificationCompat.PRIORITY_MAX) // 通知重要程度
+                .setPriority(NotificationCompat.PRIORITY_MAX) // 通知重要程度*//*
                 .build()
 
-        manager.notify(1, notification)
+        //notification.contentView = remoteViews
+
+        manager.notify(1, notification)*/
+
         //manager.cancel(1)
 
     }

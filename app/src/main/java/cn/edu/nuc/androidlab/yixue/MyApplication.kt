@@ -1,8 +1,11 @@
 package cn.edu.nuc.androidlab.yixue
 
 import android.app.Application
+import android.content.IntentFilter
 import cn.edu.nuc.androidlab.yixue.bean.LU
 import cn.edu.nuc.androidlab.yixue.bean.Live
+import cn.edu.nuc.androidlab.yixue.receiver.LiveSoundsReceiver
+import cn.edu.nuc.androidlab.yixue.util.Config
 import com.avos.avoscloud.AVOSCloud
 import com.avos.avoscloud.AVObject
 
@@ -12,6 +15,8 @@ import com.avos.avoscloud.AVObject
  * Created by MurphySL on 2017/7/5.
  */
 class MyApplication : Application(){
+
+    private val liveSoundsReceiver = LiveSoundsReceiver()
 
     companion object {
         private var instance : Application? = null
@@ -30,6 +35,24 @@ class MyApplication : Application(){
         // LeanCloud 调试日志
         AVOSCloud.setDebugLogEnabled(true)
 
+        registerLiveSoundsReceiver()
 
+
+    }
+
+    private fun registerLiveSoundsReceiver() {
+        val filter : IntentFilter = IntentFilter()
+        filter.addAction(Config.LIVE_SOUNDS_START)
+        filter.addAction(Config.LIVE_SOUNDS_STOP)
+        filter.addAction(Config.LIVE_SOUNDS_NEXT)
+        filter.addAction(Config.LIVE_SOUNDS_PREVIOUS)
+
+        registerReceiver(liveSoundsReceiver, filter)
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+
+        unregisterReceiver(liveSoundsReceiver)
     }
 }

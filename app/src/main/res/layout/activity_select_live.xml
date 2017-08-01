@@ -39,4 +39,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
+    <Button
+        android:id="@+id/zxing"
+        android:text="条形码识别"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
 </LinearLayout>

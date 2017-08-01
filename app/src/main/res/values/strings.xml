@@ -22,4 +22,9 @@
     <string name="create_time">开始时间</string>
     <string name="create_summary">Live 简介</string>
     <string name="create_type">Live 类型</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
 </resources>

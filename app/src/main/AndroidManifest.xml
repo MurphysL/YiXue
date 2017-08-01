@@ -26,6 +26,12 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -94,6 +100,8 @@
         <activity android:name=".ui.activity.MyLiveActivity"/>
         <activity android:name=".ui.activity.JoinLiveActivity"/>
         <activity android:name=".ui.activity.NotifiactionActivity"/>
+        <activity android:name=".ui.activity.ZxingActivity"/>
+        <activity android:name=".ui.activity.MipcaActivityCapture"/>
 
         <receiver android:name=".receiver.LiveSoundsReceiver"/>
 

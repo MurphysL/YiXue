@@ -63,6 +63,10 @@ class SelectLiveActivity : AppCompatActivity(){
             startActivity(Intent(SelectLiveActivity@this, NotifiactionActivity::class.java))
         }
 
+        zxing.setOnClickListener {
+            startActivity(Intent(SelectLiveActivity@this, ZxingActivity::class.java))
+        }
+
         notificationTest()
 
     }

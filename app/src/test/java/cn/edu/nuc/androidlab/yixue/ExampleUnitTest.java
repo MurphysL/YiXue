@@ -2,6 +2,8 @@ package cn.edu.nuc.androidlab.yixue;
 
 import org.junit.Test;
 
+import cn.edu.nuc.androidlab.yixue.net.Service;
+
 import static org.junit.Assert.*;
 
 /**

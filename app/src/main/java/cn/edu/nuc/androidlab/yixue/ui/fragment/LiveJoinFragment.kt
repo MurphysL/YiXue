@@ -99,9 +99,9 @@ class LiveJoinFragment : Fragment(){
 
     private fun enterConversation(conversationId: String) {
         Log.i(TAG,"conversationId $conversationId")
-        //val intent: Intent = Intent(context, LCIMConversationActivity::class.java)
-        //intent.putExtra(LCIMConstants.CONVERSATION_ID, conversationId)
-        //startActivity(intent)
+        val intent: Intent = Intent(context, LCIMConversationActivity::class.java)
+        intent.putExtra(LCIMConstants.CONVERSATION_ID, conversationId)
+        startActivity(intent)
     }
 
     @Deprecated("deprecated")

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.edu.nuc.androidlab.yixue">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".MapActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.SelectLiveActivity"/>
+        <activity
+            android:name=".ui.activity.CreateLiveActivity"
+            android:theme="@style/DetailsTheme"/>
+        <activity
+            android:name=".ui.activity.LiveMainActivity"
+            android:theme="@style/DetailsTheme"/>
+        <activity android:name=".ui.activity.MyLiveActivity"/>
+        <activity android:name=".ui.activity.JoinLiveActivity"/>
+        <activity android:name=".ui.activity.NotifiactionActivity"/>
+        <activity android:name=".ui.activity.ZxingActivity"/>
+        <activity android:name=".ui.activity.MipcaActivityCapture"/>
+
+        <receiver android:name=".receiver.LiveSoundsReceiver"/>
+
+    </application>
+
+</manifest>

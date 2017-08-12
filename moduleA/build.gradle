@@ -1,0 +1,129 @@
+
+
+if(isDebug.toBoolean()){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'config'
+            keyPassword 'yq578797'
+            storeFile file('G:/Android/keystore/MurphySL_Keystore.jks')
+            storePassword 'yq578797'
+        }
+    }
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        if(isDebug.toBoolean()){
+            applicationId "cn.edu.nuc.androidlab.yixue.moduleA"
+        }
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+
+        //所有资源必须以此 prefix 开头，否则会报错
+        resourcePrefix "moduleA_"
+        //arouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                print(project.getName())
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions{
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            if (isDebug.toBoolean()) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                java {
+                    //release 时 debug 目录下文件不需要合并到主工程
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    annotationProcessor rootProject.ext.arouterCompiler
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    // Anko Commons
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    // Anko Layouts
+    compile "org.jetbrains.anko:anko-sdk25:$anko_version"
+    // sdk15, sdk19, sdk21, sdk23 are also available
+    // Appcompat-v7 (only Anko Commons)
+    compile "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+    // Support-v4 (only Anko Commons)
+    compile "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+    compile 'com.amap.api:location:latest.integration'
+    compile 'com.amap.api:3dmap:latest.integration'
+    compile 'com.amap.api:search:latest.integration'
+
+    /*// LeanCloud 基础包
+    compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3'
+    // 推送与实时聊天需要的包
+    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true }
+    // LeanCloud 统计包
+    compile 'cn.leancloud.android:avoscloud-statistics:v4.4.3'
+    // LeanCloud 用户反馈包
+    compile 'cn.leancloud.android:avoscloud-feedback:v4.4.3@aar'
+    // avoscloud-sns：LeanCloud 第三方登录包
+    compile 'cn.leancloud.android:avoscloud-sns:v4.4.3@aar'
+    compile 'cn.leancloud.android:qq-sdk:1.6.1-leancloud'
+    // 目前新浪微博官方只提供 jar 包的集成方式
+    // 请手动下载新浪微博 SDK 的 jar 包，将其放在 libs 目录下进行集成
+    // LeanCloud 应用内搜索包
+    compile 'cn.leancloud.android:avoscloud-search:v4.4.3@aar'
+    //compile ('cn.leancloud.android:chatkit:1.0.0')
+    testCompile 'junit:junit:4.12'*/
+
+    compile 'com.zhy:base-rvadapter:3.0.3'
+
+
+    /*compile files('libs/core.jar')*/
+    compile project(':common')
+    compile project(':leancloudchatkit')
+}
+repositories {
+    mavenCentral()
+}

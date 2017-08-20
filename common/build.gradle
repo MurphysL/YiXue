@@ -46,27 +46,26 @@ dependencies {
    /* compile rootProject.ext.arouterCompiler*/
     compile rootProject.ext.arouterApi
 
-    // LeanCloud 基础包
-    compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3'
-    // 推送与实时聊天需要的包
-    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true }
-    // LeanCloud 统计包
-    compile 'cn.leancloud.android:avoscloud-statistics:v4.4.3'
-    // LeanCloud 用户反馈包
-    compile 'cn.leancloud.android:avoscloud-feedback:v4.4.3@aar'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+
+
+    compile 'cn.leancloud.android:avoscloud-sdk:v4.4.3' // LeanCloud 基础包
+    compile('cn.leancloud.android:avoscloud-push:v4.4.3@aar') { transitive = true } // 推送与实时聊天需要的包
+    compile 'cn.leancloud.android:avoscloud-statistics:v4.4.3'// LeanCloud 统计包
+    compile 'cn.leancloud.android:avoscloud-feedback:v4.4.3@aar' // LeanCloud 用户反馈包
     // avoscloud-sns：LeanCloud 第三方登录包
     compile 'cn.leancloud.android:avoscloud-sns:v4.4.3@aar'
     compile 'cn.leancloud.android:qq-sdk:1.6.1-leancloud'
     // 目前新浪微博官方只提供 jar 包的集成方式
     // 请手动下载新浪微博 SDK 的 jar 包，将其放在 libs 目录下进行集成
-    // LeanCloud 应用内搜索包
-    compile 'cn.leancloud.android:avoscloud-search:v4.4.3@aar'
+    compile 'cn.leancloud.android:avoscloud-search:v4.4.3@aar'// LeanCloud 应用内搜索包
 
     compile 'com.contrarywind:Android-PickerView:3.2.5'
     compile 'com.zhihu.android:matisse:0.4.3'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
 
+    compile 'com.jakewharton:butterknife:8.7.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'

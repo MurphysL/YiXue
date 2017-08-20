@@ -87,7 +87,7 @@ class MapFragment : Fragment() {
     }
 
     private fun initLocation() {
-        locationManager = LocationManager(MyApplication.instance())
+        locationManager = LocationManager(context)
         if(locationManager != null){
             locationManager?.setLocationListener(object : LocationListener{
                 override fun onLocationChanged(aMapLocation: AMapLocation?) {

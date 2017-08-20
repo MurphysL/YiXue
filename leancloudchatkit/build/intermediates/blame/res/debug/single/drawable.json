@@ -1,11 +1,11 @@
 [
     {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_switch_thumb_material.xml"
-    },
-    {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_chat_record_button_round_background.xml",
@@ -72,20 +72,20 @@
         "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_bottom_bar_picture_button_bg.xml"
     },
     {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\notification_icon_background.xml"
-    },
-    {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_bottom_bar_keyboard_button_bg.xml",
+        "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_bottom_bar_keyboard_button_bg.xml"
     },
     {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_bottom_bar_keyboard_button_bg.xml",
-        "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_bottom_bar_keyboard_button_bg.xml"
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",

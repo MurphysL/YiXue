@@ -49,9 +49,7 @@ class Config{
         val LU_USER_ID : String = "userId" // 用户 ID
 
         @JvmStatic
-        val LIVE_SOUNDS_START = "start"
-        @JvmStatic
-        val LIVE_SOUNDS_STOP = "stop"
+        val LIVE_SOUNDS_CHANGE = "change"
         @JvmStatic
         val LIVE_SOUNDS_NEXT = "next"
         @JvmStatic

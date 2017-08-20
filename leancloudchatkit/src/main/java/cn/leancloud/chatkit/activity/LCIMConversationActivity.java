@@ -126,6 +126,7 @@ public class LCIMConversationActivity extends AppCompatActivity {
           if (null != e) {
             showToast(e.getMessage());
           } else {
+            //MurphySL
             updateConversation(avimConversation);
           }
         }

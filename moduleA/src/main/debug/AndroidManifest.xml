@@ -92,10 +92,10 @@
 
         <activity android:name=".ui.activity.SelectLiveActivity"/>
         <activity
-            android:name=".ui.activity.CreateLiveActivity"
+            android:name=".ui.activity.live.CreateLiveActivity"
             android:theme="@style/DetailsTheme"/>
         <activity
-            android:name=".ui.activity.LiveMainActivity"
+            android:name=".ui.activity.live.LiveMainActivity"
             android:theme="@style/DetailsTheme"/>
         <activity android:name=".ui.activity.MyLiveActivity"/>
         <activity android:name=".ui.activity.JoinLiveActivity"/>
@@ -103,7 +103,20 @@
         <activity android:name=".ui.activity.ZxingActivity"/>
         <activity android:name=".ui.activity.MipcaActivityCapture"/>
 
-        <receiver android:name=".receiver.LiveSoundsReceiver"/>
+        <receiver android:name=".receiver.LiveAudioReceiver"/>
+        <service android:name=".service.LiveAudioService"/>
+        <activity android:name=".ocr.MainActivity"/>
+
+        <activity android:name=".ocr.IDCardActivity"
+            android:label="@string/idCardLabel">
+        </activity>
+
+        <activity android:name=".ui.activity.im.ConversationActivity">
+            <!--<intent-filter>
+                <action android:name="cn.leancloud.chatkit.conversation_item_click_action"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>-->
+        </activity>
 
     </application>
 

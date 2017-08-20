@@ -1,21 +1,16 @@
 package cn.edu.nuc.androidlab.yixue.ui.activity
 
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.RemoteViews
 import cn.edu.nuc.androidlab.common.config.RouterConfig
 import cn.edu.nuc.androidlab.yixue.R
-import cn.edu.nuc.androidlab.yixue.receiver.LiveSoundsReceiver
-import cn.edu.nuc.androidlab.yixue.util.Config
+import cn.edu.nuc.androidlab.yixue.ocr.MainActivity
+import cn.edu.nuc.androidlab.yixue.ui.activity.live.CreateLiveActivity
+import cn.edu.nuc.androidlab.yixue.ui.activity.live.LiveMainActivity
 import cn.leancloud.chatkit.LCChatKit
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.avos.avoscloud.AVUser
@@ -68,6 +63,10 @@ class SelectLiveActivity : AppCompatActivity(){
 
         zxing.setOnClickListener {
             startActivity(Intent(SelectLiveActivity@this, ZxingActivity::class.java))
+        }
+
+        ocr.setOnClickListener {
+            startActivity(Intent(SelectLiveActivity@this, MainActivity::class.java))
         }
 
         notificationTest()

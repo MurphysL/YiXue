@@ -52,9 +52,9 @@
                     android:layout_height="30dp" />
 
                 <ImageView
-                    android:id="@+id/stop"
+                    android:id="@+id/change"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_play_circle_outline_black_24dp"
+                    android:src="@drawable/audio_play"
                     android:layout_width="30dp"
                     android:layout_height="30dp" />
 

@@ -49,6 +49,15 @@ class Config{
         val LU_USER_ID : String = "userId" // 用户 ID
 
         @JvmStatic
+        val UI_TABLE : String = "UserInfo"
+        @JvmStatic
+        val UI_USER_ID : String = "userId" // 用户 ID
+        @JvmStatic
+        val UI_USER_NAME : String = "username" // 用户姓名
+        @JvmStatic
+        val UI_AVATAR : String = "avatar" // 用户头像
+
+        @JvmStatic
         val LIVE_SOUNDS_START = "start"
         @JvmStatic
         val LIVE_SOUNDS_STOP = "stop"

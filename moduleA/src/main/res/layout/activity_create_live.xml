@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.CreateLiveActivity">
+    tools:context=".ui.activity.live.CreateLiveActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -70,7 +70,7 @@
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:background="@color/colorTheme"
+        android:background="@color/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

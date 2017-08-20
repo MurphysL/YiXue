@@ -16,20 +16,20 @@
         "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_bottom_bar_text_layout.xml"
     },
     {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_part_chronometer.xml"
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lcim_bottom_bar_more_layout.xml",
         "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_bottom_bar_more_layout.xml"
+    },
+    {
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
@@ -40,12 +40,12 @@
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lcim_chat_item_right_layout.xml",
-        "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_chat_item_right_layout.xml"
-    },
-    {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_view.xml",
         "source": "C:\\Users\\MurphySL\\.android\\build-cache\\d1ae00f516371cd47f8273db71daea289f5d0d65\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lcim_chat_item_right_layout.xml",
+        "source": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_chat_item_right_layout.xml"
     },
     {
         "merged": "G:\\AndroidWorkspace\\YiXue\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple.xml",

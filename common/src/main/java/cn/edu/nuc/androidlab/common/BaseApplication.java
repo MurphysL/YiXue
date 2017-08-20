@@ -8,6 +8,7 @@ import com.avos.avoscloud.AVObject;
 
 import cn.edu.nuc.androidlab.common.bean.LU;
 import cn.edu.nuc.androidlab.common.bean.Live;
+import cn.edu.nuc.androidlab.common.bean.UserInfo;
 
 /**
  * BaseApplication
@@ -28,6 +29,7 @@ public class BaseApplication extends Application {
         }
         ARouter.init(this);
 
+        AVObject.registerSubclass(UserInfo.class);
         AVObject.registerSubclass(Live.class);
         AVObject.registerSubclass(LU.class);
 

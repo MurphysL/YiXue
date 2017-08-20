@@ -1,11 +1,8 @@
 package debug
 
 import android.content.Intent
-import android.content.IntentFilter
 import android.util.Log
-import cn.edu.nuc.androidlab.yixue.receiver.LiveAudioReceiver
 import cn.edu.nuc.androidlab.yixue.service.LiveAudioService
-import cn.edu.nuc.androidlab.yixue.util.Config
 
 /**
  * MyApplication
@@ -19,10 +16,6 @@ class MyApplication : cn.edu.nuc.androidlab.common.BaseApplication(){
         private var instance : MyApplication? = null
         @JvmStatic
         fun instance() = instance
-
-        @JvmStatic
-        var player_flag = false
-
     }
 
     override fun onCreate() {
@@ -34,7 +27,7 @@ class MyApplication : cn.edu.nuc.androidlab.common.BaseApplication(){
 
     override fun onTerminate() {
         super.onTerminate()
-
+        Log.i("APP", "onTer")
         stopService(Intent(this, LiveAudioService::class.java))
     }
 }

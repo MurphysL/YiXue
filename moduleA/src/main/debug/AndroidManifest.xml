@@ -103,7 +103,6 @@
         <activity android:name=".ui.activity.ZxingActivity"/>
         <activity android:name=".ui.activity.MipcaActivityCapture"/>
 
-        <receiver android:name=".receiver.LiveAudioReceiver"/>
         <service android:name=".service.LiveAudioService"/>
         <activity android:name=".ocr.MainActivity"/>
 

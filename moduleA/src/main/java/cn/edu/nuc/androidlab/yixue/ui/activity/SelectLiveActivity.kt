@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import cn.edu.nuc.androidlab.common.bean.UserInfo
 import cn.edu.nuc.androidlab.common.config.RouterConfig
 import cn.edu.nuc.androidlab.yixue.R
 import cn.edu.nuc.androidlab.yixue.ocr.MainActivity
@@ -13,7 +14,9 @@ import cn.edu.nuc.androidlab.yixue.ui.activity.live.CreateLiveActivity
 import cn.edu.nuc.androidlab.yixue.ui.activity.live.LiveMainActivity
 import cn.leancloud.chatkit.LCChatKit
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVUser
+import com.avos.avoscloud.SaveCallback
 import com.avos.avoscloud.im.v2.AVIMClient
 import com.avos.avoscloud.im.v2.AVIMException
 import com.avos.avoscloud.im.v2.callback.AVIMClientCallback
@@ -67,6 +70,35 @@ class SelectLiveActivity : AppCompatActivity(){
 
         ocr.setOnClickListener {
             startActivity(Intent(SelectLiveActivity@this, MainActivity::class.java))
+        }
+
+        update.setOnClickListener {
+           /* val user1 = UserInfo()
+            user1.userId = "5996d75c570c350061b063df"
+            user1.username = "杨浩东"
+            user1.saveInBackground(object : SaveCallback(){
+                override fun done(p0: AVException?) {
+                    if(p0 == null){
+                        Log.i(TAG, "upload user1 success")
+                    }
+                }
+
+            })*/
+
+            val user3 = UserInfo()
+            user3.userId = "596478991b69e6006670f55f"
+            user3.username = "JohnSnow"
+            user3.avatar = "http://ac-o5aeuqar.clouddn.com/gj1FN6TwvhedPEmlbHQSUqQbhlneYOlsMmliU6Qv.jpg"
+            user3.saveInBackground(object : SaveCallback(){
+                override fun done(p0: AVException?) {
+                    if(p0 == null){
+                        Log.i(TAG, "upload user1 success")
+                    }else{
+                        Log.i(TAG, p0.toString())
+                    }
+                }
+
+            })
         }
 
         notificationTest()

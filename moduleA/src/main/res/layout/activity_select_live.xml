@@ -47,6 +47,13 @@
 
     <Button
         android:id="@+id/ocr"
+        android:text="OCR"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/update"
+        android:text="更新用户"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 

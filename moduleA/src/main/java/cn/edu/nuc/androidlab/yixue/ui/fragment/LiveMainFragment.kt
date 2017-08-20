@@ -79,7 +79,7 @@ class LiveMainFragment : Fragment(){
                                     // 付费
 
                                     AVUser.getCurrentUser()?.let {
-                                        uploadInfo(t.objectId, t.conversationId)
+                                        uploadInfo(t)
                                     }?: toast("Please Login First").show()
                                 }
                             }?: toast("Unknown Error").show()
@@ -91,10 +91,10 @@ class LiveMainFragment : Fragment(){
 
     }
 
-    private fun uploadInfo(liveId : String, conversationId: String){
+    private fun uploadInfo(live : Live){
         val query = AVQuery<LU>("LU")
         query.whereEqualTo(Config.LU_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, AVUser.getCurrentUser().objectId))
-        query.whereEqualTo(Config.LU_LIVE_ID, AVObject.createWithoutData(Config.LIVE_TABLE, liveId))
+        query.whereEqualTo(Config.LU_LIVE_ID, AVObject.createWithoutData(Config.LIVE_TABLE, live.objectId))
         // 查询是否已选
         query.findInBackground(object : FindCallback<LU>(){
             override fun done(p0: MutableList<LU>?, p1: AVException?) {
@@ -102,18 +102,18 @@ class LiveMainFragment : Fragment(){
                     p0?.let {
                         if(p0.isEmpty()){
                             val lu = LU()
-                            lu.liveId = liveId
+                            lu.liveId = live.objectId
                             lu.userId = AVUser.getCurrentUser().objectId
                             lu.saveInBackground(object : SaveCallback(){
                                 override fun done(p0: AVException?) {
                                     p0?.let {
                                         toast("Unknown Error")
                                         Log.i(TAG, "Create LU Fail：$p0")
-                                    }?:enterLive(conversationId)
+                                    }?:enterLive(live)
                                 }
                             })
                         }else{
-                            enterLive(conversationId)
+                            enterLive(live)
                         }
                     }
                 }else{
@@ -125,10 +125,10 @@ class LiveMainFragment : Fragment(){
 
     }
 
-    private fun  enterLive(conversationId : String) {
+    private fun  enterLive(live : Live) {
         val conversationQuery : AVIMConversationsQuery = AVIMClient.getInstance(AVUser.getCurrentUser().objectId).conversationsQuery
         conversationQuery.let {
-            it.whereEqualTo("objectId", conversationId)
+            it.whereEqualTo("objectId", live.conversationId)
             conversationQuery.findInBackground(object : AVIMConversationQueryCallback(){
                 override fun done(p0: MutableList<AVIMConversation>?, p1: AVIMException?) {
                     if(p1 != null){
@@ -147,7 +147,8 @@ class LiveMainFragment : Fragment(){
                                 if(p0 == null){
                                     Log.i(TAG, "Get Conversation Success")
                                     val intent = Intent(context, ConversationActivity::class.java)
-                                    intent.putExtra(LCIMConstants.CONVERSATION_ID, conversationId)
+                                    intent.putExtra(LCIMConstants.CONVERSATION_ID, live.conversationId)
+                                    intent.putExtra(Config.LIVE_TABLE, live)
                                     startActivity(intent)
                                 }else{
                                     toast("Enter Conversation Fail").show()

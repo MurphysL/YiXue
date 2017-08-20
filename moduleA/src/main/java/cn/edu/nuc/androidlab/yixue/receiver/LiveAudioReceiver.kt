@@ -34,7 +34,7 @@ class LiveAudioReceiver : BroadcastReceiver(){
         action?.let {
             when(it){
                 Config.LIVE_SOUNDS_CHANGE -> {
-                    service.startAudio()
+                    service.changeAudio()
                 }
                 Config.LIVE_SOUNDS_NEXT -> {
                     Log.i(TAG, "next")

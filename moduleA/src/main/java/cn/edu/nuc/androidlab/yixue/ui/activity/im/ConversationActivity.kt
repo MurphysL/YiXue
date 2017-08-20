@@ -11,8 +11,10 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
+import cn.edu.nuc.androidlab.common.bean.Live
 import cn.edu.nuc.androidlab.yixue.R
 import cn.edu.nuc.androidlab.yixue.service.LiveAudioService
+import cn.edu.nuc.androidlab.yixue.util.Config
 import cn.leancloud.chatkit.LCChatKit
 import cn.leancloud.chatkit.activity.LCIMConversationFragment
 import cn.leancloud.chatkit.cache.LCIMConversationItemCache
@@ -32,6 +34,8 @@ import kotlinx.android.synthetic.main.activity_conversation.*
 /**
  * Conversation Activity
  *
+ * binder 为空
+ *
  * Created by MurphySL on 2017/8/20.
  */
 class ConversationActivity : AppCompatActivity(){
@@ -42,10 +46,11 @@ class ConversationActivity : AppCompatActivity(){
 
     private val conn = object : ServiceConnection{
         override fun onServiceDisconnected(p0: ComponentName?) {
-
+            Log.i(TAG, "onServiceDisconnected")
         }
 
         override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {
+            Log.i(TAG, "onServiceConnected")
             binder = p1 as LiveAudioService.AudioBinder
         }
 
@@ -108,10 +113,12 @@ class ConversationActivity : AppCompatActivity(){
     }
 
     private fun updateConversation(conversation: AVIMConversation?) {
+
         conversation?.let {
             conversation.queryMessages(object : AVIMMessagesQueryCallback(){
                 override fun done(p0: MutableList<AVIMMessage>?, p1: AVIMException?) {
-                    if(p1 != null){
+                    if(p1 == null){
+                        binder.updateInfo(intent.extras.getParcelable(Config.LIVE_TABLE))
                         p0?.let {
                             if(p0.isNotEmpty()){
                                 Log.i(TAG, "get Message")
@@ -123,6 +130,8 @@ class ConversationActivity : AppCompatActivity(){
                                 }
                             }
                         }
+                    }else{
+                        Log.i(TAG, "Get Message Fail: $p1")
                     }
                 }
             })

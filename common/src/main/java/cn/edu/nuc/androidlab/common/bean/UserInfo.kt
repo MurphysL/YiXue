@@ -21,7 +21,7 @@ class UserInfo : AVObject(){
         get() {
             return getAVObject<AVUser>(Config.UI_USER_ID).objectId
         }
-        set(value) = put(Config.UI_USER_ID, value)
+        set(value) = put(Config.UI_USER_ID, AVObject.createWithoutData(Config.USER_TABLE, value))
 
     var username : String
         get() = getString(Config.UI_USER_NAME)

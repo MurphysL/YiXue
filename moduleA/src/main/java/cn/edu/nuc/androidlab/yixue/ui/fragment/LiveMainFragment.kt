@@ -147,8 +147,8 @@ class LiveMainFragment : Fragment(){
                                 if(p0 == null){
                                     Log.i(TAG, "Get Conversation Success")
                                     val intent = Intent(context, ConversationActivity::class.java)
-                                    intent.putExtra(LCIMConstants.CONVERSATION_ID, live.conversationId)
                                     intent.putExtra(Config.LIVE_TABLE, live)
+                                    intent.putExtra(LCIMConstants.CONVERSATION_ID, live.conversationId)
                                     startActivity(intent)
                                 }else{
                                     toast("Enter Conversation Fail").show()

@@ -15,6 +15,8 @@ class Config{
         val LIVE_TABLE: String = "Live" // Live 表
         @JvmStatic
         val LU_TABLE : String = "LU" // Live - User 关联表
+        @JvmStatic
+        val UI_TABLE : String = "UserInfo" // 公用用户信息表
 
         @JvmStatic
         val LIVE_ID : String = "objectId" // Live ID
@@ -47,6 +49,13 @@ class Config{
         val LU_LIVE_ID : String = "liveId" // Live ID
         @JvmStatic
         val LU_USER_ID : String = "userId" // 用户 ID
+
+        @JvmStatic
+        val UI_AVATAR = "avatar" // 用户头像
+        @JvmStatic
+        val UI_USERNAME = "username" // 用户姓名
+        @JvmStatic
+        val UI_USER_ID = "userId" // 用户ID
 
         @JvmStatic
         val LIVE_SOUNDS_CHANGE = "change"

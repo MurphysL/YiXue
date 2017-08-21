@@ -8,6 +8,7 @@ import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
 import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
@@ -34,40 +35,47 @@ import kotlinx.android.synthetic.main.activity_conversation.*
 /**
  * Conversation Activity
  *
- * binder 为空
- *
  * Created by MurphySL on 2017/8/20.
  */
 class ConversationActivity : AppCompatActivity(){
     private val TAG = this.javaClass.simpleName
 
-    private lateinit var conversationFragment : LCIMConversationFragment
-    private lateinit var binder : LiveAudioService.AudioBinder
+    private val conversationFragment = LCIMConversationFragment()
+    private lateinit var binder : LiveAudioService.AudioBinder // 异步执行
+    var live : Live? = null
 
     private val conn = object : ServiceConnection{
-        override fun onServiceDisconnected(p0: ComponentName?) {
-            Log.i(TAG, "onServiceDisconnected")
-        }
+        override fun onServiceDisconnected(p0: ComponentName?) {}
 
         override fun onServiceConnected(p0: ComponentName?, p1: IBinder?) {
-            Log.i(TAG, "onServiceConnected")
             binder = p1 as LiveAudioService.AudioBinder
+            binder.updateInfo(live)
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversation)
 
+        live = intent.extras.getParcelable(Config.LIVE_TABLE)
+        Log.i(TAG, live?.userId)
+        val b = Bundle()
+        b.putString("live", live?.userId)
+        conversationFragment.arguments = b
+        initFragment()
+
+        LCChatKit.getInstance().profileProvider = CustomUserProvider.getInstance() // 设置用户系统
+
         bindService(Intent(ConversationActivity@this, LiveAudioService::class.java), conn, Context.BIND_AUTO_CREATE)
-        initView()
+    }
+
+    override fun onStart() {
+        super.onStart()
         initByIntent(intent)
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        Log.i(TAG, "onNewIntent")
         initByIntent(intent)
     }
 
@@ -76,7 +84,6 @@ class ConversationActivity : AppCompatActivity(){
             intent?.let {
                 val bundle = intent.extras
                 bundle?.let {
-                    LCChatKit.getInstance().profileProvider = CustomUserProvider.getInstance() // 设置用户系统
 
                     when {
                         bundle.containsKey(LCIMConstants.PEER_ID) -> getConversation(bundle.getString(LCIMConstants.PEER_ID))
@@ -113,15 +120,12 @@ class ConversationActivity : AppCompatActivity(){
     }
 
     private fun updateConversation(conversation: AVIMConversation?) {
-
         conversation?.let {
             conversation.queryMessages(object : AVIMMessagesQueryCallback(){
                 override fun done(p0: MutableList<AVIMMessage>?, p1: AVIMException?) {
                     if(p1 == null){
-                        binder.updateInfo(intent.extras.getParcelable(Config.LIVE_TABLE))
                         p0?.let {
                             if(p0.isNotEmpty()){
-                                Log.i(TAG, "get Message")
                                 p0.forEach {
                                     if(it is AVIMAudioMessage){
                                         Log.i(TAG, "get Audio Message")
@@ -173,8 +177,10 @@ class ConversationActivity : AppCompatActivity(){
         )
     }
 
-    private fun initView() {
-        conversationFragment = supportFragmentManager.findFragmentById(R.id.fragment_chat) as LCIMConversationFragment
+    private fun initFragment() {
+        //conversationFragment = supportFragmentManager.findFragmentById(R.id.fragment_chat) as LCIMConversationFragment
+        Log.i(TAG, "INITfRAGMENT")
+        supportFragmentManager.beginTransaction().add(R.id.container, conversationFragment).commit()
     }
 
     override fun onDestroy() {

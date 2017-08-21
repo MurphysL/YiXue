@@ -27,7 +27,7 @@ class UserInfo : AVObject(){
         get() = getString(Config.UI_USER_NAME)
         set(value) = put(Config.UI_USER_NAME, value)
 
-    var avatar : String
+    var avatar : String?
     get() = getString(Config.UI_AVATAR)
         set(value) = put(Config.UI_AVATAR, value)
 
